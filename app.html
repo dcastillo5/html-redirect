@@ -14,7 +14,7 @@
         // Redirigir basado en el parámetro 'url'
         const url = getParameterByName('url');
         if (url) {
-            window.location.href = `http://com.sociably/${url}`;
+            window.location.href = `com.sociably/${url}`;
             console.log(`Redirigiendo a http://com.sociably/${url}`)
         } else {
             document.body.innerHTML = '<h1>Error: URL no especificada</h1>';
