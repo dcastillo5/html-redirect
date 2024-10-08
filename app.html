@@ -23,7 +23,12 @@
     </script>
 </head>
 <body>
-    <h1>Redirigiendo...</h1>
-    <p>Si no eres redirigido automáticamente, <a href=`http://com.sociably/${url}`>haz clic aquí</a>.</p>
+    <h1>Redirigiendo a la App...</h1>
+    <p>Si no eres redirigido automáticamente, <a id="fallback-link" href="">haz clic aquí</a>.</p>
+
+    <script>
+        // Asignar la URL al enlace de respaldo
+        document.getElementById('fallback-link').href = `http://com.sociably/${url}`;
+    </script>
 </body>
 </html>
