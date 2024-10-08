@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Redireccionando a la app</title>
+  <script>
+    // Verifica si el usuario está en Android o iOS
+    function redirectToApp() {
+      var userAgent = navigator.userAgent || navigator.vendor || window.opera;
+      
+      // Deep link para Android y iOS
+      var androidAppLink = "http://com.sociably/event/5";
+      var iosAppLink = "yourappscheme://your-path";
+
+      // Detecta Android
+      if (/android/i.test(userAgent)) {
+        window.location.href = androidAppLink;
+      }
+      // Detecta iOS
+      else if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
+        window.location.href = iosAppLink;
+      } else {
+        // Si no está en un dispositivo móvil, muestra un mensaje o redirige a la web
+        window.location.href = "http://com.sociably/event/5";
+      }
+    }
+
+    window.onload = redirectToApp;
+  </script>
+</head>
+<body>
+  <p>Redirigiendo a la aplicación...</p>
+</body>
+</html>
