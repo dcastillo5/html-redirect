@@ -1,35 +1,27 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Redireccionando a la app</title>
-  <script>
-    // Verifica si el usuario está en Android o iOS
-    function redirectToApp() {
-      var userAgent = navigator.userAgent || navigator.vendor || window.opera;
-      
-      // Deep link para Android y iOS
-      var androidAppLink = "http://com.sociably/event/5";
-      var iosAppLink = "yourappscheme://your-path";
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Redirección</title>
+    <script>
+        // Función para obtener el valor del parámetro 'url' de la URL
+        function getParameterByName(name) {
+            const urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get(name);
+        }
 
-      // Detecta Android
-      if (/android/i.test(userAgent)) {
-        window.location.href = androidAppLink;
-      }
-      // Detecta iOS
-      else if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
-        window.location.href = iosAppLink;
-      } else {
-        // Si no está en un dispositivo móvil, muestra un mensaje o redirige a la web
-        window.location.href = "http://com.sociably/event/5";
-      }
-    }
-
-    window.onload = redirectToApp;
-  </script>
+        // Redirigir basado en el parámetro 'url'
+        const url = getParameterByName('url');
+        if (url) {
+            window.location.href = `http://com.sociably/${url}`;
+        } else {
+            document.body.innerHTML = '<h1>Error: URL no especificada</h1>';
+        }
+    </script>
 </head>
 <body>
-  <p>Redirigiendo a la aplicación...</p>
+    <h1>Redirigiendo...</h1>
+    <p>Si no eres redirigido automáticamente, <a href="#">haz clic aquí</a>.</p>
 </body>
 </html>
